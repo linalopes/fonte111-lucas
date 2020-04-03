@@ -1,4 +1,4 @@
-let input, buttonSave, greeting;
+let input, buttonSave, greeting, postGreeting;
 let images = {};
 let lastInput = '';
 
@@ -33,17 +33,18 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  input = createInput();
-  input.position(20, 100);
+  input = select('#nameInput');
+  buttonSave = select('#buttonSave');
+  greeting = select('#greeting');
+  postGreeting = select('#postGreeting');
 
-  buttonSave = createButton('salvar');
-  buttonSave.position(input.x + input.width, 100);
+  const header = select('#header');
+  const myCanvas = createCanvas(windowWidth, windowHeight - header.height);
+  myCanvas.parent('htmlCanvas');
+
   buttonSave.mousePressed(save);
   buttonSave.hide();
-
-  greeting = createElement('h4', 'Qual seu nome?');
-  greeting.position(20, 5);
+  postGreeting.hide();
 }
 
 function draw() {
@@ -57,22 +58,22 @@ function greet(name) {
   name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
   name = name.replace(/ +/g, ' ');
   name = name.replace(/ /g, '-');
-  const iY = input.y + input.height;
+
   const iW = width / name.length;
 
   clear();
 
   for (let i=0; i<name.length; i++) {
     let letter = name[i];
-    image(images[letter], iW*i, iY, iW, iW * 1.7778);
+    image(images[letter], iW*i, 0, iW, iW * 1.7778);
   }
 
   if(name !== '') {
-    greeting.html('Olá ' + lastInput + '! Sua coreografia da Pablo é assim:');
+    postGreeting.show();
     buttonSave.show();
   }
   else {
-    greeting.html('Qual seu nome?');
+    postGreeting.hide();
     buttonSave.hide();
   }
 }
