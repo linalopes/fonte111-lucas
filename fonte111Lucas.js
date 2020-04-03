@@ -29,7 +29,7 @@ function preload() {
   images['X'] = loadImage('data/X.png');
   images['Y'] = loadImage('data/Y.png');
   images['Z'] = loadImage('data/Z.png');
-  images['_'] = loadImage('data/_.png');
+  images['-'] = loadImage('data/-.png');
 }
 
 function setup() {
@@ -54,7 +54,7 @@ function draw() {
 }
 
 function greet(name) {
-  name = name.replace(/ /g, '_');
+  name = name.replace(/ /g, '-');
   const iY = input.y + input.height;
   const iW = width / name.length;
 
