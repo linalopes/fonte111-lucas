@@ -44,7 +44,7 @@ function setup() {
 }
 
 function greet() {
-  const name = input.value();
+  const name = input.value().toUpperCase();
   greeting.html('Olá ' + name + '! Sua coreografia da Pablo é assim:');
   input.value('');
   clear();

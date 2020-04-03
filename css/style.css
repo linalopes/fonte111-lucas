@@ -91,6 +91,10 @@ input[type=color], input[type=date], input[type=datetime-local], input[type=date
 	-webkit-transition: all .1s cubic-bezier(.645,.045,.355,1);
 	transition: all .1s cubic-bezier(.645,.045,.355,1);
 }
+input[type=text] {
+    text-transform: uppercase;
+}
+
 .form-control-wrap {
 	margin-bottom: 20px;
 }
