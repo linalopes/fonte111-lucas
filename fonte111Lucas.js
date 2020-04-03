@@ -1,6 +1,7 @@
-let input, buttonSave, greeting, postGreeting;
+let input, buttonSave, buttonPNG, buttonGIF, greeting, postGreeting;
 let images = {};
 let lastInput = '';
+let drawMode = 'PNG';
 
 function preload() {
   images['A'] = loadImage('data/A.png');
@@ -35,6 +36,8 @@ function preload() {
 function setup() {
   input = select('#nameInput');
   buttonSave = select('#buttonSave');
+  buttonGIF = select('#buttonGIF');
+  buttonPNG = select('#buttonPNG');
   greeting = select('#greeting');
   postGreeting = select('#postGreeting');
 
@@ -43,18 +46,49 @@ function setup() {
   myCanvas.parent('htmlCanvas');
 
   buttonSave.mousePressed(save);
+  buttonGIF.mousePressed(doGIF);
+  buttonPNG.mousePressed(doPNG);
   buttonSave.hide();
   postGreeting.hide();
+  doPNG();
 }
 
 function draw() {
   const name = input.value().toUpperCase();
-  if(name == lastInput) return;
-  lastInput = name;
-  greet(name);
+
+  if(drawMode == 'PNG') drawPNG(name);
+  else drawGIF(name);
+
+  if(name !== '') {
+    postGreeting.show();
+    buttonSave.show();
+    buttonSave.style('display', 'inline');
+  } else {
+    postGreeting.hide();
+    buttonSave.hide();
+  }
 }
 
-function greet(name) {
+function drawGIF(name) {
+  name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
+  name = name.replace(/ +/g, ' ');
+  name = name.replace(/ /g, '-');
+
+  if (name === '') return;
+
+  const iH = 1.1 * height;
+
+  clear();
+
+  const imageIndex = floor((millis() / 400.0) % name.length);
+  const mImage = images[name[imageIndex]];
+  image(mImage, 0, -96, iH / 1.777778, iH);
+}
+
+function drawPNG(name) {
+  if(name == lastInput) return;
+  lastInput = name;
+
   name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
   name = name.replace(/ +/g, ' ');
   name = name.replace(/ /g, '-');
@@ -63,22 +97,27 @@ function greet(name) {
 
   clear();
 
-  for (let i=0; i<name.length; i++) {
+  for (let i = 0; i < name.length; i++) {
     let letter = name[i];
     image(images[letter], iW*i, 0, iW, iW * 1.7778);
-  }
-
-  if(name !== '') {
-    postGreeting.show();
-    buttonSave.show();
-  }
-  else {
-    postGreeting.hide();
-    buttonSave.hide();
   }
 }
 
 function save() {
   const name = input.value();
-  save(name + '_' + millis() + '.png');
+  if(drawMode == 'PNG') save(name + '_' + millis() + '.png');
+}
+
+function doGIF() {
+  drawMode = 'GIF';
+  lastInput = '';
+  buttonPNG.style('display', 'inline');
+  buttonGIF.hide();
+}
+
+function doPNG() {
+  drawMode = 'PNG';
+  lastInput = '';
+  buttonGIF.style('display', 'inline');
+  buttonPNG.hide();
 }
