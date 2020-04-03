@@ -45,18 +45,21 @@ function setup() {
 
 function greet() {
   const name = input.value().toUpperCase();
-  greeting.html('Olá ' + name + '! Sua coreografia da Pablo é assim:');
-  input.value('');
   const iY = input.y + input.height;
+  const iW = width / name.length;
+
+  greeting.html('Olá ' + name + '! Sua coreografia da Pablo é assim:');
+
   clear();
+  input.value('');
 
   for (let i=0; i<name.length; i++) {
     let letter = name[i];
-    image(images[letter], 100*i, iY, 100, 177.7778);
+    image(images[letter], iW*i, iY, iW, iW * 1.7778);
   }
 
   buttonSave = createButton('salvar');
-  buttonSave.position(input.x, input.y + input.height + 200);
+  buttonSave.position(input.x + input.width + buttonOk.width + 16, input.y);
   buttonSave.mousePressed(save);
   
 }
