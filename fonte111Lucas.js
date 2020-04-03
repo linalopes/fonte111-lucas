@@ -1,4 +1,4 @@
-let input, button, greeting;
+let input, buttonOk, buttonSave, greeting;
 let images = {};
 
 function preload() {
@@ -35,11 +35,11 @@ function setup() {
   input = createInput();
   input.position(20, 100);
 
-  button = createButton('ok');
-  button.position(input.x + input.width, 100);
-  button.mousePressed(greet);
+  buttonOk = createButton('ok');
+  buttonOk.position(input.x + input.width, 100);
+  buttonOk.mousePressed(greet);
 
-  greeting = createElement('h2', 'Qual seu nome?');
+  greeting = createElement('h4', 'Qual seu nome?');
   greeting.position(20, 5);
 }
 
@@ -55,23 +55,13 @@ function greet() {
     image(images[letter], 100*i, iY, 100, 177.7778);
   }
 
-
-  //for (let i = 0; i < 200; i++) {
-  //  push();
-  //  fill(random(255), 255, 255);
-  //  translate(random(width), random(height));
-  //  rotate(random(2 * PI));
-  //  text(name, 0, 0);
-  //  pop();
-  //}
-}
-
-function alphabet(letter) {
+  buttonSave = createButton('salvar');
+  buttonSave.position(input.x, input.y + input.height + 200);
+  buttonSave.mousePressed(save);
   
 }
 
-function keyPressed() {
-  if (key == 'S') {
-    save('msg'+millis()+'.png');
-  }
+function save() {
+  const name = input.value();
+  save(name + '_' + millis() + '.png');
 }
