@@ -52,82 +52,82 @@ function greet() {
     //text(name[i],width/2+4*i, height/4);
     switch (name[i]) {
     case 'a':
-      image(A, 100*i, height/2, 100, 100);
+      image(A, 100*i, height/2, 100, 177.7778);
       break;
     case 'b':
-      image(B, 100*i, height/2, 100, 100);
+      image(B, 100*i, height/2, 100, 177.7778);
       break;
     case 'c':
-      image(C, 100*i, height/2, 100, 100);
+      image(C, 100*i, height/2, 100, 177.7778);
       break;
     case 'd':
-      image(D, 100*i, height/2, 100, 100);
+      image(D, 100*i, height/2, 100, 177.7778);
       break;
     case 'e':
-      image(E, 100*i, height/2, 100, 100);
+      image(E, 100*i, height/2, 100, 177.7778);
       break;
     case 'f':
-      image(F, 100*i, height/2, 100, 100);
+      image(F, 100*i, height/2, 100, 177.7778);
       break;
     case 'g':
-      image(G, 100*i, height/2, 100, 100);
+      image(G, 100*i, height/2, 100, 177.7778);
       break;
     case 'h':
-      image(H, 100*i, height/2, 100, 100);
+      image(H, 100*i, height/2, 100, 177.7778);
       break;
     case 'i':
-      image(I, 100*i, height/2, 100, 100);
+      image(I, 100*i, height/2, 100, 177.7778);
       break;
     case 'j':
-      image(J, 100*i, height/2, 100, 100);
+      image(J, 100*i, height/2, 100, 177.7778);
       break;
     case 'k':
-      image(K, 100*i, height/2, 100, 100);
+      image(K, 100*i, height/2, 100, 177.7778);
       break;
     case 'l':
-      image(L, 100*i, height/2, 100, 100);
+      image(L, 100*i, height/2, 100, 177.7778);
       break;
     case 'm':
-      image(M, 100*i, height/2, 100, 100);
+      image(M, 100*i, height/2, 100, 177.7778);
       break;
     case 'n':
-      image(N, 100*i, height/2, 100, 100);
+      image(N, 100*i, height/2, 100, 177.7778);
       break;
     case 'o':
-      image(O, 100*i, height/2, 100, 100);
+      image(O, 100*i, height/2, 100, 177.7778);
       break;
     case 'p':
-      image(P, 100*i, height/2, 100, 100);
+      image(P, 100*i, height/2, 100, 177.7778);
       break;
     case 'q':
-      image(Q, 100*i, height/2, 100, 100);
+      image(Q, 100*i, height/2, 100, 177.7778);
       break;
     case 'r':
-      image(R, 100*i, height/2, 100, 100);
+      image(R, 100*i, height/2, 100, 177.7778);
       break;
     case 's':
-      image(S, 100*i, height/2, 100, 100);
+      image(S, 100*i, height/2, 100, 177.7778);
       break;
     case 't':
-      image(T, 100*i, height/2, 100, 100);
+      image(T, 100*i, height/2, 100, 177.7778);
       break;
     case 'u':
-      image(U, 100*i, height/2, 100, 100);
+      image(U, 100*i, height/2, 100, 177.7778);
       break;
     case 'v':
-      image(V, 100*i, height/2, 100, 100);
+      image(V, 100*i, height/2, 100, 177.7778);
       break;
     case 'w':
-      image(W, 100*i, height/2, 100, 100);
+      image(W, 100*i, height/2, 100, 177.7778);
       break;
     case 'x':
-      image(x, 100*i, height/2, 100, 100);
+      image(x, 100*i, height/2, 100, 177.7778);
       break;
     case 'y':
-      image(Y, 100*i, height/2, 100, 100);
+      image(Y, 100*i, height/2, 100, 177.7778);
       break;
     case 'z':
-      image(Z, 100*i, height/2, 100, 100);
+      image(Z, 100*i, height/2, 100, 177.7778);
       break;
     }
   }
