@@ -1,5 +1,6 @@
-let input, buttonOk, buttonSave, greeting;
+let input, buttonSave, greeting;
 let images = {};
+let lastInput = '';
 
 function preload() {
   images['A'] = loadImage('data/A.png');
@@ -35,33 +36,37 @@ function setup() {
   input = createInput();
   input.position(20, 100);
 
-  buttonOk = createButton('ok');
-  buttonOk.position(input.x + input.width, 100);
-  buttonOk.mousePressed(greet);
+  buttonSave = createButton('salvar');
+  buttonSave.position(input.x + input.width, 100);
+  buttonSave.mousePressed(save);
+  buttonSave.hide();
 
   greeting = createElement('h4', 'Qual seu nome?');
   greeting.position(20, 5);
 }
 
-function greet() {
+function draw() {
   const name = input.value().toUpperCase();
+  if(name == lastInput) return;
+  lastInput = name;
+  greet(name);
+}
+
+function greet(name) {
   const iY = input.y + input.height;
   const iW = width / name.length;
 
   greeting.html('Olá ' + name + '! Sua coreografia da Pablo é assim:');
 
   clear();
-  input.value('');
 
   for (let i=0; i<name.length; i++) {
     let letter = name[i];
     image(images[letter], iW*i, iY, iW, iW * 1.7778);
   }
 
-  buttonSave = createButton('salvar');
-  buttonSave.position(input.x + input.width + buttonOk.width + 16, input.y);
-  buttonSave.mousePressed(save);
-  
+  if(name !== '') buttonSave.show();
+  else buttonSave.hide();
 }
 
 function save() {
