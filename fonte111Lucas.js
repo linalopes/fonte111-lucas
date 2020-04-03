@@ -54,6 +54,7 @@ function draw() {
 }
 
 function greet(name) {
+  name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
   name = name.replace(/ +/g, ' ');
   name = name.replace(/ /g, '-');
   const iY = input.y + input.height;
