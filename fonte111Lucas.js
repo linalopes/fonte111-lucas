@@ -29,6 +29,7 @@ function preload() {
   images['X'] = loadImage('data/X.png');
   images['Y'] = loadImage('data/Y.png');
   images['Z'] = loadImage('data/Z.png');
+  images['_'] = loadImage('data/_.png');
 }
 
 function setup() {
@@ -53,10 +54,9 @@ function draw() {
 }
 
 function greet(name) {
+  name = name.replace(/ /g, '_');
   const iY = input.y + input.height;
   const iW = width / name.length;
-
-  greeting.html('Olá ' + name + '! Sua coreografia da Pablo é assim:');
 
   clear();
 
@@ -65,8 +65,14 @@ function greet(name) {
     image(images[letter], iW*i, iY, iW, iW * 1.7778);
   }
 
-  if(name !== '') buttonSave.show();
-  else buttonSave.hide();
+  if(name !== '') {
+    greeting.html('Olá ' + lastInput + '! Sua coreografia da Pablo é assim:');
+    buttonSave.show();
+  }
+  else {
+    greeting.html('Qual seu nome?');
+    buttonSave.hide();
+  }
 }
 
 function save() {
