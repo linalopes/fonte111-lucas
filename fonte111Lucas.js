@@ -1,5 +1,6 @@
-let input, buttonOk, buttonSave, greeting;
+let input, buttonSave, greeting, postGreeting;
 let images = {};
+let lastInput = '';
 
 function preload() {
   images['A'] = loadImage('data/A.png');
@@ -28,37 +29,53 @@ function preload() {
   images['X'] = loadImage('data/X.png');
   images['Y'] = loadImage('data/Y.png');
   images['Z'] = loadImage('data/Z.png');
+  images['-'] = loadImage('data/-.png');
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  input = createInput();
-  input.position(20, 100);
+  input = select('#nameInput');
+  buttonSave = select('#buttonSave');
+  greeting = select('#greeting');
+  postGreeting = select('#postGreeting');
 
-  buttonOk = createButton('ok');
-  buttonOk.position(input.x + input.width, 100);
-  buttonOk.mousePressed(greet);
+  const header = select('#header');
+  const myCanvas = createCanvas(windowWidth, windowHeight - header.height);
+  myCanvas.parent('htmlCanvas');
 
-  greeting = createElement('h4', 'Qual seu nome?');
-  greeting.position(20, 5);
+  buttonSave.mousePressed(save);
+  buttonSave.hide();
+  postGreeting.hide();
 }
 
-function greet() {
+function draw() {
   const name = input.value().toUpperCase();
-  greeting.html('Olá ' + name + '! Sua coreografia da Pablo é assim:');
-  input.value('');
-  const iY = input.y + input.height;
+  if(name == lastInput) return;
+  lastInput = name;
+  greet(name);
+}
+
+function greet(name) {
+  name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
+  name = name.replace(/ +/g, ' ');
+  name = name.replace(/ /g, '-');
+
+  const iW = width / name.length;
+
   clear();
 
   for (let i=0; i<name.length; i++) {
     let letter = name[i];
-    image(images[letter], 100*i, iY, 100, 177.7778);
+    image(images[letter], iW*i, 0, iW, iW * 1.7778);
   }
 
-  buttonSave = createButton('salvar');
-  buttonSave.position(input.x, input.y + input.height + 200);
-  buttonSave.mousePressed(save);
-  
+  if(name !== '') {
+    postGreeting.show();
+    buttonSave.show();
+  }
+  else {
+    postGreeting.hide();
+    buttonSave.hide();
+  }
 }
 
 function save() {

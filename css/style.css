@@ -8,6 +8,11 @@ font-family: 'Open Sans', sans-serif;
 
 @charset "utf-8";
 
+html {
+	padding: 0;
+	margin: 0;
+}
+
 body {
 	font-family: "Open Sans", sans-serif;
 	font-weight: 400;
@@ -17,47 +22,31 @@ body {
 	color: #999;
 	font-size: 16px;
 	overflow-x: hidden;
-}
-ul, ol {
-	list-style: none;
-}
-a {
-	color: #222222;
-	text-decoration: none;
-	-webkit-transition: all .1s cubic-bezier(.645,.045,.355,1);
-	transition: all .1s cubic-bezier(.645,.045,.355,1);
-}
-a:hover {
-	text-decoration: none;
-	color: #45deb0;
-}
-a:focus {
-	text-decoration: none;
-}
-p {
-	margin-bottom: 8px;
-}
-blockquote {
-	font-size: 20px;
-	font-style: italic;
-	color: #ababab;
-	font-weight: 400;
-	padding: 20px 60px;
+	padding: 0;
 	margin: 0;
-	border: none;
 }
-blockquote:before, blockquote:after, q:before, q:after {
-	content: "";
+
+#htmlCanvas {
+	padding: 0;
+	margin: 0;
 }
-img {
-	max-width: 100%;
-	height: auto;
+
+#header {
+	height: 10vh;
 }
-iframe {
-	border: none;
-	width: 100%;
+#greeting, #nameInput {
+	display: inline;
+	margin: 0 4px;
 }
-button, input[type=button], input[type=reset], input[type=submit] {
+#postGreeting {
+	margin: 12px 4px 0;
+}
+#buttonSave {
+	position: absolute;
+	bottom: 0;
+}
+
+button, input[type=button] {
 	padding: 0 42px;
 	height: 55px;
 	outline: none;
@@ -73,45 +62,33 @@ button, input[type=button], input[type=reset], input[type=submit] {
 	-webkit-transition: all .1s cubic-bezier(.645,.045,.355,1);
 	transition: all .1s cubic-bezier(.645,.045,.355,1);
 }
-input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=range], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], textarea {
+
+input[type=text], textarea {
 	width: 20%;
 	outline: none;
 	border: 0;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #aaa;
 	border-radius: 0;
 	color: #878c9b;
 	background: none;
 }
+
 input:focus, textarea:focus {
 	border-bottom: 1px solid #1a237e;
 }
-input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=range], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select {
+
+input[type=text], select {
 	padding: 3px 0;
-	height: 57px;
+	height: 32px;
 	-webkit-transition: all .1s cubic-bezier(.645,.045,.355,1);
 	transition: all .1s cubic-bezier(.645,.045,.355,1);
 }
 input[type=text] {
-    text-transform: uppercase;
+	text-transform: uppercase;
+	color: #AA58C6;
+	font-size: 16px;
 }
 
-.form-control-wrap {
-	margin-bottom: 20px;
-}
-select {
-	box-sizing: border-box;
-	cursor: pointer;
-	display: block;
-	height: 28px;
-	user-select: none;
-	-webkit-user-select: none;
-	background-color: #fff;
-	border: 1px solid #999;
-	width: 100%;
-	height: 40px;
-	padding: 0 20px;
-	color: inherit;
-}
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: "Open Sans", sans-serif;
 	font-weight: 700;
@@ -137,11 +114,3 @@ h5, .h5 {
 h6, .h6 {
 	font-size: 14px;
 }
-.fullwidth {
-	width: 100%;
-}
-.site {
-	position: relative;
-}
-
-
