@@ -1,0 +1,143 @@
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+	0. import files
+-------------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+font-family: 'Open Sans', sans-serif;
+
+@charset "utf-8";
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 1.8;
+	letter-spacing: 0;
+	color: #999;
+	font-size: 16px;
+	overflow-x: hidden;
+}
+ul, ol {
+	list-style: none;
+}
+a {
+	color: #222222;
+	text-decoration: none;
+	-webkit-transition: all .1s cubic-bezier(.645,.045,.355,1);
+	transition: all .1s cubic-bezier(.645,.045,.355,1);
+}
+a:hover {
+	text-decoration: none;
+	color: #45deb0;
+}
+a:focus {
+	text-decoration: none;
+}
+p {
+	margin-bottom: 8px;
+}
+blockquote {
+	font-size: 20px;
+	font-style: italic;
+	color: #ababab;
+	font-weight: 400;
+	padding: 20px 60px;
+	margin: 0;
+	border: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: "";
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+iframe {
+	border: none;
+	width: 100%;
+}
+button, input[type=button], input[type=reset], input[type=submit] {
+	padding: 0 42px;
+	height: 55px;
+	outline: none;
+	border: 0;
+	border-radius: 30px;
+	background-color: #F0E8D0;
+	color: #45deb0;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	font-weight: 700;
+	font-size: 14px;
+	cursor: pointer;
+	-webkit-transition: all .1s cubic-bezier(.645,.045,.355,1);
+	transition: all .1s cubic-bezier(.645,.045,.355,1);
+}
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=range], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], textarea {
+	width: 20%;
+	outline: none;
+	border: 0;
+	border-bottom: 1px solid #ddd;
+	border-radius: 0;
+	color: #878c9b;
+	background: none;
+}
+input:focus, textarea:focus {
+	border-bottom: 1px solid #1a237e;
+}
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=range], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select {
+	padding: 3px 0;
+	height: 57px;
+	-webkit-transition: all .1s cubic-bezier(.645,.045,.355,1);
+	transition: all .1s cubic-bezier(.645,.045,.355,1);
+}
+.form-control-wrap {
+	margin-bottom: 20px;
+}
+select {
+	box-sizing: border-box;
+	cursor: pointer;
+	display: block;
+	height: 28px;
+	user-select: none;
+	-webkit-user-select: none;
+	background-color: #fff;
+	border: 1px solid #999;
+	width: 100%;
+	height: 40px;
+	padding: 0 20px;
+	color: inherit;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	line-height: 1.2;
+    color: #AA58C6;
+}
+h1, .h1 {
+	font-size:56px;
+}
+h2, .h2 {
+	font-size: 40px;
+}
+h3, .h3 {
+	font-size: 34px;
+}
+h4, .h4 {
+	font-size: 24px;
+}
+h5, .h5 {
+	font-size: 18px;
+}
+h6, .h6 {
+	font-size: 14px;
+}
+.fullwidth {
+	width: 100%;
+}
+.site {
+	position: relative;
+}
+
+
