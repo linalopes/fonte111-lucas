@@ -61,8 +61,8 @@ function draw() {
 
   if(name !== '') {
     postGreeting.show();
-    buttonSave.show();
-    buttonSave.style('display', 'inline');
+    if(drawMode == 'PNG') buttonSave.style('display', 'inline');
+    else buttonSave.hide();
   } else {
     postGreeting.hide();
     buttonSave.hide();
@@ -105,6 +105,10 @@ function drawPNG(name) {
 
 function save() {
   const name = input.value();
+  name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
+  name = name.replace(/ +/g, ' ');
+  name = name.replace(/ /g, '-');
+
   if(drawMode == 'PNG') save(name + '_' + millis() + '.png');
 }
 
