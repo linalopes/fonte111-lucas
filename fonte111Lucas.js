@@ -56,12 +56,12 @@ function setup() {
 function draw() {
   const name = input.value().toUpperCase();
 
-  if(drawMode == 'PNG') drawPNG(name);
+  if (drawMode == 'PNG') drawPNG(name);
   else drawGIF(name);
 
-  if(name !== '') {
+  if (name !== '') {
     postGreeting.show();
-    if(drawMode == 'PNG') buttonSave.style('display', 'inline');
+    if (drawMode == 'PNG') buttonSave.style('display', 'inline');
     else buttonSave.hide();
   } else {
     postGreeting.hide();
@@ -86,7 +86,7 @@ function drawGIF(name) {
 }
 
 function drawPNG(name) {
-  if(name == lastInput) return;
+  if (name == lastInput) return;
   lastInput = name;
 
   name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
@@ -109,7 +109,7 @@ function save() {
   name = name.replace(/ +/g, ' ');
   name = name.replace(/ /g, '-');
 
-  if(drawMode == 'PNG') save(name + '_' + millis() + '.png');
+  if (drawMode == 'PNG') save(name + '_' + millis() + '.png');
 }
 
 function doGIF() {
