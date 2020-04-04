@@ -4,6 +4,20 @@ let lastInput = '';
 let drawMode = 'PNG';
 
 function preload() {
+  input = select('#nameInput');
+  buttonSave = select('#buttonSave');
+  buttonGIF = select('#buttonGIF');
+  buttonPNG = select('#buttonPNG');
+  greeting = select('#greeting');
+  postGreeting = select('#postGreeting');
+
+  buttonSave.mousePressed(save);
+  buttonGIF.mousePressed(doGIF);
+  buttonPNG.mousePressed(doPNG);
+  buttonSave.hide();
+  postGreeting.hide();
+  doPNG();
+
   images['A'] = loadImage('data/A.png');
   images['B'] = loadImage('data/B.png');
   images['C'] = loadImage('data/C.png');
@@ -34,23 +48,9 @@ function preload() {
 }
 
 function setup() {
-  input = select('#nameInput');
-  buttonSave = select('#buttonSave');
-  buttonGIF = select('#buttonGIF');
-  buttonPNG = select('#buttonPNG');
-  greeting = select('#greeting');
-  postGreeting = select('#postGreeting');
-
   const header = select('#header');
   const myCanvas = createCanvas(windowWidth, windowHeight - header.height);
   myCanvas.parent('htmlCanvas');
-
-  buttonSave.mousePressed(save);
-  buttonGIF.mousePressed(doGIF);
-  buttonPNG.mousePressed(doPNG);
-  buttonSave.hide();
-  postGreeting.hide();
-  doPNG();
 }
 
 function draw() {
