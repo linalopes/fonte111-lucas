@@ -1,8 +1,23 @@
-let input, buttonSave, greeting, postGreeting;
+let input, buttonSave, buttonPNG, buttonGIF, greeting, postGreeting;
 let images = {};
 let lastInput = '';
+let drawMode = 'PNG';
 
 function preload() {
+  input = select('#nameInput');
+  buttonSave = select('#buttonSave');
+  buttonGIF = select('#buttonGIF');
+  buttonPNG = select('#buttonPNG');
+  greeting = select('#greeting');
+  postGreeting = select('#postGreeting');
+
+  buttonSave.mousePressed(save);
+  buttonGIF.mousePressed(doGIF);
+  buttonPNG.mousePressed(doPNG);
+  buttonSave.hide();
+  postGreeting.hide();
+  doPNG();
+
   images['A'] = loadImage('data/A.png');
   images['B'] = loadImage('data/B.png');
   images['C'] = loadImage('data/C.png');
@@ -33,52 +48,78 @@ function preload() {
 }
 
 function setup() {
-  input = select('#nameInput');
-  buttonSave = select('#buttonSave');
-  greeting = select('#greeting');
-  postGreeting = select('#postGreeting');
-
   const header = select('#header');
   const myCanvas = createCanvas(windowWidth, windowHeight - header.height);
   myCanvas.parent('htmlCanvas');
-
-  buttonSave.mousePressed(save);
-  buttonSave.hide();
-  postGreeting.hide();
 }
 
 function draw() {
   const name = input.value().toUpperCase();
-  if(name == lastInput) return;
-  lastInput = name;
-  greet(name);
-}
 
-function greet(name) {
-  name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
-  name = name.replace(/ +/g, ' ');
-  name = name.replace(/ /g, '-');
+  if (drawMode == 'PNG') drawPNG(name);
+  else drawGIF(name);
 
-  const iW = width / name.length;
-
-  clear();
-
-  for (let i=0; i<name.length; i++) {
-    let letter = name[i];
-    image(images[letter], iW*i, 0, iW, iW * 1.7778);
-  }
-
-  if(name !== '') {
+  if (name !== '') {
     postGreeting.show();
-    buttonSave.show();
-  }
-  else {
+    if (drawMode == 'PNG') buttonSave.style('display', 'inline');
+    else buttonSave.hide();
+  } else {
     postGreeting.hide();
     buttonSave.hide();
   }
 }
 
+function drawGIF(name) {
+  name = cleanName(name);
+
+  if (name === '') return;
+
+  const iH = 1.1 * height;
+
+  clear();
+
+  const imageIndex = floor((millis() / 400.0) % name.length);
+  const mImage = images[name[imageIndex]];
+  image(mImage, 0, -96, iH / 1.777778, iH);
+}
+
+function drawPNG(name) {
+  if (name == lastInput) return;
+  lastInput = name;
+
+  name = cleanName(name);
+
+  const iW = width / name.length;
+
+  clear();
+
+  for (let i = 0; i < name.length; i++) {
+    let letter = name[i];
+    image(images[letter], iW*i, 0, iW, iW * 1.7778);
+  }
+}
+
 function save() {
-  const name = input.value();
-  save(name + '_' + millis() + '.png');
+  const name = cleanName(input.value());
+  if (drawMode == 'PNG') save(name + '_' + millis() + '.png');
+}
+
+function doGIF() {
+  drawMode = 'GIF';
+  lastInput = '';
+  buttonPNG.style('display', 'inline');
+  buttonGIF.hide();
+}
+
+function doPNG() {
+  drawMode = 'PNG';
+  lastInput = '';
+  buttonGIF.style('display', 'inline');
+  buttonPNG.hide();
+}
+
+function cleanName(name) {
+  return name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ')
+             .replace(/ +/g, ' ')
+             .replace(/ /g, '-');
 }

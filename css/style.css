@@ -41,9 +41,13 @@ body {
 #postGreeting {
 	margin: 12px 4px 0;
 }
-#buttonSave {
+
+#footer {
 	position: absolute;
 	bottom: 0;
+}
+#buttonSave, #buttonGIF, #buttonPNG {
+	display: inline;
 }
 
 button, input[type=button] {
