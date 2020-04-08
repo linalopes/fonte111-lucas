@@ -70,9 +70,7 @@ function draw() {
 }
 
 function drawGIF(name) {
-  name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
-  name = name.replace(/ +/g, ' ');
-  name = name.replace(/ /g, '-');
+  name = cleanName(name);
 
   if (name === '') return;
 
@@ -89,9 +87,7 @@ function drawPNG(name) {
   if (name == lastInput) return;
   lastInput = name;
 
-  name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
-  name = name.replace(/ +/g, ' ');
-  name = name.replace(/ /g, '-');
+  name = cleanName(name);
 
   const iW = width / name.length;
 
@@ -104,11 +100,7 @@ function drawPNG(name) {
 }
 
 function save() {
-  const name = input.value();
-  name = name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ');
-  name = name.replace(/ +/g, ' ');
-  name = name.replace(/ /g, '-');
-
+  const name = cleanName(input.value());
   if (drawMode == 'PNG') save(name + '_' + millis() + '.png');
 }
 
@@ -124,4 +116,10 @@ function doPNG() {
   lastInput = '';
   buttonGIF.style('display', 'inline');
   buttonPNG.hide();
+}
+
+function cleanName(name) {
+  return name.replace(/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, ' ')
+             .replace(/ +/g, ' ')
+             .replace(/ /g, '-');
 }
